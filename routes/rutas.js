@@ -2,17 +2,19 @@ import express from 'express'
 
 import {ControladorCelda} from '../controllers/ControladorCelda.js'
 import {ControladorVehiculo} from '../controllers/ControladorVehiculo.js'
+import {ControladorAdmin} from '../controllers/ControladorAdmin.js'
 
 let controladorCelda = new ControladorCelda()
 let controladorVehiculo= new ControladorVehiculo()
+let controladorAdmin= new ControladorAdmin()
 
 export let rutas=express.Router()
 
 //Rutas administradores
-/*rutas.get('/api/v1/parqueadero/admins/', administrador.buscarTodos)
-rutas.get('/api/v1/parqueadero/admin/:id/parking', administrador.buscarPorId)//Jhon
-rutas.post('/api/v1/parqueadero/admin/',administrador.insertar)
-rutas.put('/api/v1/parqueadero/admin/:id/', administrador.editar)*/
+rutas.get('/api/v1/parqueadero/admins/', controladorAdmin.buscarAdmins)
+rutas.get('/api/v1/parqueadero/admin/:id/parking', controladorAdmin.buscarAdmin)//Jhon
+rutas.post('/api/v1/parqueadero/admin/',controladorAdmin.agregarAdmin)
+rutas.put('/api/v1/parqueadero/admin/:id/', controladorAdmin.editarAdmin)
 
 
 //Rutas celdas
